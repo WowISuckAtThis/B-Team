@@ -7,10 +7,11 @@ protected:
     uint32_t init_time;
     uint32_t life_time;
 
-virtual bool isDead(uint32_t curr_time) = 0;
+    virtual bool isDead() = 0;
+
 
 public:
-    virtual int run(uint32_t curr_time) = 0;
+    virtual void run() = 0;
     virtual ~AutonomousTask() = default;
 };
 #endif

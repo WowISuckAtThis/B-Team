@@ -2,18 +2,17 @@
 #include "TaskExample.h"
 #include "main.h"
 
-TaskExample::TaskExample(uint32_t curr_time, uint32_t life_span) {
+TaskExample::TaskExample(uint32_t life_span) {
     life_time = life_span;
-    init_time = curr_time;
+    init_time = pros::millis();
 }
 
-int TaskExample::run(uint32_t curr_time) {
-    if (isDead(curr_time)) return -1;
-
+void TaskExample::run() {
+    if (isDead()) return;
+    
     test();
-    return 1;
 }
 
-bool TaskExample::isDead(uint32_t curr_time) {
-    return curr_time >= life_time + init_time;
+bool TaskExample::isDead() {
+    return pros::millis() >= life_time + init_time;
 }    
