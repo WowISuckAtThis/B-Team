@@ -37,10 +37,15 @@ int DriveAction::run() {
     double dotProd      = deltaXNorm * xFacingNorm      + deltaYNorm * yFacingNorm;
     double dotProdDeriv = deltaXNorm * xFacingNormDeriv + deltaYNorm * yFacingNormDeriv;
 
-    
+    return 0;
 }
 
 bool DriveAction::isDead() {
     //May be rehashed later to take curr velocity into account
-    return pros::millis() >= life_time + init_time;
+    double xCur;
+    double yCur;
+    std::tie(xCur, yCur) = PositionTracker::getPosition();
+
+    double dist = sqrt(pow(xCur - xTar, 2) + pow(yCur - yTar, 2));
+    return (pros::millis() >= life_time + init_time || dist < 0.5);
 }

@@ -1,8 +1,8 @@
 #include "AutonomousAction.h"
 
-class LittleWillDown: public AutonomousAction {
+class LittleWillUp: public AutonomousAction {
 public:
-    LittleWillDown();
+    LittleWillUp();
     int run();
 
 protected:

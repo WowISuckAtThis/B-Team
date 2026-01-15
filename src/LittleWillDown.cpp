@@ -10,6 +10,6 @@ int LittleWillDown::run() {
     return will.set_value(1);
 }
 
-bool isDead() {
+bool LittleWillDown::isDead() {
     return false;
 }

@@ -1,15 +1,15 @@
-#include "LittleWillDown.h"
+#include "LittleWillUp.h"
 #include "main.h"
 
-LittleWillDown::LittleWillDown() {
+LittleWillUp::LittleWillUp() {
 
 }
 
-int LittleWillDown::run() {
+int LittleWillUp::run() {
     pros::ADIDigitalOut will(7);
     return will.set_value(0);
 }
 
-bool isDead() {
+bool LittleWillUp::isDead() {
     return false;
 }
