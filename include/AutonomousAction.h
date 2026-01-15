@@ -2,16 +2,15 @@
 #define YOUREBACK
 #include <cstdint>
 
-class AutonomousTask {
+class AutonomousAction {
 protected:
     uint32_t init_time;
     uint32_t life_time;
-
+    
     virtual bool isDead() = 0;
 
-
 public:
-    virtual void run() = 0;
-    virtual ~AutonomousTask() = default;
+    virtual int run() = 0;
+    virtual ~AutonomousAction() = default;
 };
 #endif
