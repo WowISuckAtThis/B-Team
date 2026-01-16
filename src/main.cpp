@@ -9,6 +9,26 @@
 #include "LittleWillUp.h"
 #include "DriveAction.h"
 #include <memory>
+
+double R_accel = 1;
+
+void setDriveVelocities(double speed, double turn_rate) {
+	pros::MotorGroup leftM({7, -9, 8});
+	pros::MotorGroup rightM({-3, 2, -1});
+
+	double L = leftM.get_voltage();
+	double R = rightM.get_voltage();
+
+	double targetL = speed + turn_rate;
+	double targetR = speed - turn_rate;
+
+	double dR = targetR - R;
+	double dL = targetL - L;
+
+	leftM.move(L + dL * R_accel);
+	rightM.move(R + dR * R_accel);
+}
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *

@@ -44,8 +44,7 @@ int DriveAction::run() {
     double front_or_back = (dotProd > 0) ? 1.0 : -1.0;
     double turning = max_vel * dotProdDeriv * front_or_back;
 
-    pros::MotorGroup({});
-    pros::MotorGroup({});
+    setDriveVelocities(front_or_back * vel, -turning);
 
     return 0;
 }
