@@ -2,6 +2,7 @@
 #include "DriveAction.h"
 #include "PositionTracker.h"
 #include "main.h"
+#include "pros/motor_group.hpp"
 
 DriveAction::DriveAction(double x_tar, double y_tar, uint32_t life_span) {
     life_time = life_span;
@@ -36,6 +37,15 @@ int DriveAction::run() {
 
     double dotProd      = deltaXNorm * xFacingNorm      + deltaYNorm * yFacingNorm;
     double dotProdDeriv = deltaXNorm * xFacingNormDeriv + deltaYNorm * yFacingNormDeriv;
+
+    double max_vel = 20.0;
+    double vel = max_vel;
+
+    double front_or_back = (dotProd > 0) ? 1.0 : -1.0;
+    double turning = max_vel * dotProdDeriv * front_or_back;
+
+    pros::MotorGroup({});
+    pros::MotorGroup({});
 
     return 0;
 }

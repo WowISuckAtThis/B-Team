@@ -5,8 +5,8 @@
 #include <thread>
 
 const double TRACKINGWHEELDIAMETER = 2.75;
-const double LPODOFFSETX = -2.0;
-const double RPODOFFSETX =  2.0;
+const double LPODOFFSETX = -3.0625;
+const double RPODOFFSETX =  3.0625;
 const double CPODOFFSETY = -2.0;
 
 double robot_x = 0;
@@ -47,7 +47,10 @@ void PositionTracker::updatePosition() {
         robot_y += -rotCenterYp * cos(arcAngle) - rotCenterXp * sin(arcAngle);
         heading += arcAngle;
     } else { //Straight Line Case
-        
+        double mLR = (mL + mR) / 2.0;
+
+        robot_x += mC * cos(heading - M_PI / 2) - mLR * sin(heading - M_PI / 2);
+        robot_y += mC * sin(heading - M_PI / 2) + mLR * cos(heading - M_PI / 2);
     }
 }
 
