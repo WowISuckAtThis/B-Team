@@ -108,7 +108,7 @@ void autonomous() {
  */
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup left_mg({10, -9, 8});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
+	pros::MotorGroup left_mg({7, -9, 8});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
 	pros::MotorGroup right_mg({-3, 2, -1});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
 	pros::Motor intake1(12);
 	pros::Motor intake2(-13);
